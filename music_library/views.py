@@ -31,7 +31,7 @@ def music_detail(request, pk):
         serializer = MusicSerializer(music, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'DELETE':
         music.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_200_OK)
